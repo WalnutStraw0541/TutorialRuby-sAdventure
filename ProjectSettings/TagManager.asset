@@ -3,16 +3,20 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Projectile
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Confiner
   - Water
   - UI
   - 
   - 
+  - player
+  - projectile
   - 
   - 
   - 
@@ -33,11 +37,12 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - NPC
+  - Camera
   m_SortingLayers:
+  - name: Background
+    uniqueID: 2766579207
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
