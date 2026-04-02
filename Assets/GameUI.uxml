@@ -6,5 +6,5 @@
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="CharacterPortrait" style="flex-grow: 1; background-image: url(&quot;project://database/Assets/UnityTechnologies/StarterAsset/Art/Ruby/UI/CharacterPortrait.png?fileID=21300000&amp;guid=374193bc7008fa34ab9b2bbca376937b&amp;type=3#CharacterPortrait&quot;); height: 206px; width: 198px; -unity-background-scale-mode: scale-to-fit; -unity-slice-left: -59; -unity-slice-top: -6; -unity-slice-right: -74; -unity-slice-bottom: -2; left: 35px; position: absolute; top: 25px;" />
-    <ui:Instance template="NPCDialogue" name="NPCDialogue" style="position: absolute; height: 581px; width: 1823px; top: 1531px; left: 49px; -unity-font-style: bold; font-size: 25%; right: -1298px; bottom: -1554px;" />
+    <ui:Instance template="NPCDialogue" name="NPCDialogue" style="position: absolute; height: 42%; width: 46%; top: 659px; left: 136px; -unity-font-style: bold; font-size: 25%; right: 54px; bottom: -390px;" />
 </ui:UXML>
