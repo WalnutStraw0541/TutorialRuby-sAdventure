@@ -1,98 +1,90 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    // Public variables
-    public float speed;
+    // Variables related to enemy character movement
+    public float enemySpeed;
+    Rigidbody2D enemyRb2D;
     public bool vertical;
     public float changeTime = 3.0f;
-
-    // Private variables
-    Rigidbody2D rigidbody2d;
-    Animator animator;
     float timer;
     int direction = 1;
-    bool broken = true;
+
+    //Variables to handle animation
+    Animator animator;
+    bool aggressive = true;
     public ParticleSystem smokeEffect;
+
+    //Variables to handle audio
+    AudioSource enemyAudioSource;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody2d = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+        enemyRb2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
 
+        animator = GetComponent<Animator>();
+
+        enemyAudioSource = GetComponent<AudioSource>();
     }
 
-
-    // Update is called every frame
-    void Update()
+    private void Update()
     {
         timer -= Time.deltaTime;
-
 
         if (timer < 0)
         {
             direction = -direction;
             timer = changeTime;
         }
+
+        animator.SetFloat("Move X", 0);
+        animator.SetFloat("Move Y", direction);
     }
 
-
     // FixedUpdate has the same call rate as the physics system
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        if (!broken)
+        if (!aggressive)
         {
             return;
         }
-
-        Vector2 position = rigidbody2d.position;
+        Vector2 position = enemyRb2D.position;
 
         if (vertical)
         {
-            position.y = position.y + speed * direction * Time.deltaTime;
-            animator.SetFloat("ForwardX", 0);
-            animator.SetFloat("ForwardY", direction);
+            position.y = position.y + enemySpeed * direction * Time.deltaTime;
         }
         else
         {
-            position.x = position.x + speed * direction * Time.deltaTime;
-            animator.SetFloat("ForwardX", direction);
-            animator.SetFloat("ForwardY", 0);
+            position.x = position.x + enemySpeed * direction * Time.deltaTime;
         }
-
-
-        rigidbody2d.MovePosition(position);
+        enemyRb2D.MovePosition(position);
     }
-
 
     void OnCollisionEnter2D(Collision2D other)
     {
         PlayerController player = other.gameObject.GetComponent<PlayerController>();
+
         if (player != null)
         {
             player.ChangeHealth(-1);
         }
 
-        if (other.gameObject.CompareTag("Projectile"))
-        {
-            Destroy(gameObject);
-        }
     }
-
-
 
     public void Fix()
     {
-        broken = false;
-        GetComponent<Rigidbody2D>().simulated = false;
+        enemyAudioSource.Stop();
+        aggressive = false;
+        enemyRb2D.simulated = false;
         animator.SetTrigger("Fixed");
-        smokeEffect.Stop();
+
+        if (smokeEffect != null)
+        {
+            smokeEffect.Stop();
+        }
     }
-
-
 }

@@ -1,41 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class UIHandler : MonoBehaviour
 {
-    private VisualElement m_Healthbar;
+    //Variables for Health Bar
     public static UIHandler instance { get; private set; }
+    private VisualElement m_HealthBar;
 
-    // UI dialogue window variables
+
+    //Varibles for dialogue box
     public float displayTime = 4.0f;
     private VisualElement m_NonPlayerDialogue;
     private float m_TimerDisplay;
 
-
-    // Awake is called when the script instance is being loaded (in this situation, when the game scene loads)
     private void Awake()
     {
         instance = this;
     }
 
     // Start is called before the first frame update
-    private void Start()
+    void Start()
     {
-        UIDocument uiDocument = GetComponent<UIDocument>();
-        m_Healthbar = uiDocument.rootVisualElement.Q<VisualElement>("HealthBar");
+        UIDocument uidocument = GetComponent<UIDocument>();
+        m_HealthBar = uidocument.rootVisualElement.Q<VisualElement>("HealthBar");
         SetHealthValue(1.0f);
 
-
-        m_NonPlayerDialogue = uiDocument.rootVisualElement.Q<VisualElement>("NPCDialogue");
+        m_NonPlayerDialogue = uidocument.rootVisualElement.Q<VisualElement>("NPCDialogue");
         m_NonPlayerDialogue.style.display = DisplayStyle.None;
         m_TimerDisplay = -1.0f;
-
-
     }
-
-
 
     private void Update()
     {
@@ -46,22 +39,18 @@ public class UIHandler : MonoBehaviour
             {
                 m_NonPlayerDialogue.style.display = DisplayStyle.None;
             }
-
-
         }
     }
 
-
     public void SetHealthValue(float percentage)
     {
-        m_Healthbar.style.width = Length.Percent(100 * percentage);
-    }
+        m_HealthBar.style.width = Length.Percent(percentage * 100.0f);
 
+    }
 
     public void DisplayDialogue()
     {
         m_NonPlayerDialogue.style.display = DisplayStyle.Flex;
         m_TimerDisplay = displayTime;
     }
-
 }

@@ -3,46 +3,44 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Projectile
-  - Enemy
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Confiner
+  - 
   - Water
   - UI
   - 
   - 
-  - player
-  - projectile
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Character
+  - Projectiles
   - NPC
-  - Camera
+  - Confiner
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 2766579207
-    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Tilemap
+    uniqueID: 593254505
     locked: 0
