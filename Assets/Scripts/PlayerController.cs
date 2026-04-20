@@ -134,22 +134,6 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Launch");
     }
 
-    //void FindFriend(InputAction.CallbackContext callbackContext)
-    //{
-    //    RaycastHit2D hit = Physics2D.Raycast(this.transform.position, Vector2.right, 10.0f, LayerMask.GetMask("NPC"));
-
-    //    if(hit.collider != null)
-    //    {
-    //        //Debug.Log(hit.collider.name);
-    //        NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
-    //        if (character != null)
-    //        {
-    //            UIHandler.instance.DisplayDialogue();
-    //        }
-    //    }
-    //}
-
-#if COMMENT_REGION
     void FindFriend(InputAction.CallbackContext callbackContext)
     {
 
@@ -192,5 +176,4 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(clip);
     }
 
-#endif
 }
